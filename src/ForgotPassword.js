@@ -1,36 +1,24 @@
-import { useState } from "react";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "./firebase";
+import { useState } from "react";
 
 function ForgotPassword() {
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [email, setEmail] = useState('');
 
-  const handleReset = async (e) => {
-    e.preventDefault();
+  const handleReset = async () => {
     try {
       await sendPasswordResetEmail(auth, email);
-      setMessage("✔️ Reset link sent! Check your email.");
+      alert("Reset email sent");
     } catch (error) {
-      setMessage("❌ " + error.message);
+      alert(error.message);
     }
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h2>🔑 Forgot Password</h2>
-      <form onSubmit={handleReset}>
-        <input
-          type="email"
-          placeholder="Enter your email"
-          value={email}
-          required
-          onChange={(e) => setEmail(e.target.value)}
-        /><br />
-        <button type="submit">Send Reset Link</button>
-      </form>
-      <p>{message}</p>
-    </div>
+    <>
+      <input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+      <button onClick={handleReset}>Send Reset Link</button>
+    </>
   );
 }
 

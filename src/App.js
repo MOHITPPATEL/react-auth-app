@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Signup from "./signup";
 import Login from "./Login";
 import GoogleLogin from "./GoogleLogin";
@@ -7,6 +7,10 @@ import Home from "./Home";
 import PrivateRoute from "./PrivateRoute";
 import VerifyPending from "./VerifyPending";
 import AuthForm from "./AuthForm";
+import ProtectedRoute from "./ProtectedRoute";
+import { lazy, Suspense } from "react";
+
+const ForgotPassword = lazy(() => import("./ForgotPassword"));
 
 
 function App() {
@@ -19,6 +23,17 @@ function App() {
         <Route path="/google" element={<GoogleLogin />} />
         <Route path="/verify-pending" element={<VerifyPending />} />
         <Route path="/login" element={<AuthForm />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+
+        <Route
+  path="/dashboard"
+  element={
+    <ProtectedRoute>
+      <Dashboard />
+    </ProtectedRoute>
+  }
+/>
+
 
         <Route
           path="/dashboard"
