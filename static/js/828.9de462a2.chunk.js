@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkauth_demo=self.webpackChunkauth_demo||[]).push([[828],{828:(e,t,a)=>{a.r(t),a.d(t,{default:()=>r});var n=a(442),s=a(791),c=a(43),l=a(579);const r=function(){const[e,t]=(0,c.useState)("");return(0,l.jsxs)(l.Fragment,{children:[(0,l.jsx)("input",{placeholder:"Email",onChange:e=>t(e.target.value)}),(0,l.jsx)("button",{onClick:async()=>{try{await(0,n.J1)(s.j,e),alert("Reset email sent")}catch(t){alert(t.message)}},children:"Send Reset Link"})]})}}}]);
+//# sourceMappingURL=828.9de462a2.chunk.js.map
